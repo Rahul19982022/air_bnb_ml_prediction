@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+    <title>Listing Price Prediction</title>
+    
+    <link rel="stylesheet" crossorigin="anonymous"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+    
+    <script crossorigin="anonymous"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+    </script>
+
+</head>
+
+<body>
+
+    <form action= '/predict' method = "POST">
+
+        <div class="form-group row">
+            <label for="city"><b>Please choose City</b></label>
+            <select class="form-control" id="city", name = "city">
+              <option value = "amsterdam">amsterdam</option>
+              <option value = "athens">athens</option>
+              <option value = "barcelona">barcelona</option>
+              <option value = "berlin">berlin</option>
+              <option value = "budapest">budapest</option>
+              <option value = "lisbon">lisbon</option>
+              <option value = "london">london</option>
+              <option value = "paris">paris</option>
+              <option value = "rome">rome</option>
+              <option value = "vienna">vienna</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="room_type"><b>Room Type</b></label>
+            <select class="form-control" id="room_type", name = "room_type">
+              <option value = "Entire home/apt">Entire home/apt</option>
+              <option value = "Private room">Private room</option>
+              <option value = "Shared room">Shared room</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="bedrooms"><b>Number of bedrooms</b></label>
+            <select class="form-control" id="bedrooms", name = "bedrooms">
+              <option value = "0">0</option>
+              <option value = "1">1</option>
+              <option value = "2">2</option>
+              <option value = "3">3</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="person_capacity"><b>Person Capacity of Room</b></label>
+            <select class="form-control" id="person_capacity", name = "person_capacity">
+              <option value = "2">2</option>
+              <option value = "3">3</option>
+              <option value = "4">4</option>
+              <option value = "5">5</option>
+              <option value = "6">6</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group row">
+          <label for="host_is_superhost"><b>Host is a Superhost</b></label>
+          <select class="form-control" id="host_is_superhost", name = "host_is_superhost">
+            <option value = "Yes">Yes</option>
+            <option value = "No">No</option>
+          </select>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="listings"><b>Listing belongs to host having how many Listings</b></label>
+            <select class="form-control" id="listings", name = "listings">
+              <option value = "1">1</option>
+              <option value = "2-4">2-4</option>
+              <option value = "4+">4+</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="cleanliness_rating"><b>Cleanliness Rating range</b></label>
+            <input type="range" class="custom-range" min="0" max="100" name="cleanliness_rating">
+        </div>
+        <br>
+        <div>
+            <label for="guest_satisfaction_overall"><b>Guest Satisfaction Rating</b></label>
+            <input type="range" class="custom-range" min="0" max="100" id="guest_satisfaction_overall", name = "guest_satisfaction_overall">
+        </div>
+        <br>
+        <div>
+            <label for="attr_index"><b> Attraction Index score </b></label>
+            <input type="range" class="custom-range" min="0" max="1000" id="attr_index", name = "attr_index">
+        </div>
+        <br>
+        <div>
+            <label for="dist"><b> Distance from city center</b></label>
+            <input type="range" class="custom-range" min="0" max="100" id="dist", name = "dist">
+            <small id="help_dist" class="form-text text-muted">
+            Higher score means far from city center
+            </small>
+        </div>
+        <br>
+        <div>
+            <label for="metro_dist"><b>Distance from nearest metro station</b></label>
+            <input type="range" class="custom-range" min="0" max="100" id="metro_dist", name = "metro_dist">
+            <small id="help_metro_dist" class="form-text text-muted">
+            Higher score means far from nearest metro station
+            </small>
+        </div>
+        <br>  
+        <button type="submit" class="btn btn-primary">Predict</button>
+        <a href="/" class="btn btn-primary">Cancel</a>
+    </form>
+    <br>
+    {{ prediction_text }}
+</body>
